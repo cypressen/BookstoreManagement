@@ -11,6 +11,7 @@ class Intention
 private:
     std::vector<std::string> *individualLack;
     std::vector<std::string> *corporateWonder;
+
     std::filesystem::path currentPath = std::filesystem::path(__FILE__);
     std::filesystem::path targetDir = currentPath.parent_path().parent_path().parent_path();
 

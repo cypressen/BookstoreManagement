@@ -49,6 +49,9 @@ IndividualMem::~IndividualMem()
     delete lack;
 }
 
+void IndividualMem::setLackList(BookLib& lib) {
+    lack = &lib;
+}
 BookLib *IndividualMem::getLackedLib() const
 {
     return lack;
@@ -72,6 +75,10 @@ CorporateMem::~CorporateMem()
     delete wonder;
 }
 
+void CorporateMem::setWonderList(BookLib& lib) {
+
+    wonder = &lib;
+}
 BookLib* CorporateMem::getWonderedLib() const{
     return wonder;
 }

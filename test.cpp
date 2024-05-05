@@ -18,120 +18,83 @@
 
 int main(int argc, char const *argv[])
 {
-    Book A("A", "pressA", 10);
-    Book B("B", "pressB", 20);
-    Book C("C", "pressC", 15);
-    Book D("D", "pressD", 20);
+    // make some books
+    Book A("book A", "pressA", 29.9);
+    Book B("book B", "pressB", 14.9);
+    Book C("book C", "pressC", 12.9);
+    Book D("book D", "pressD", 13.9);
+    Book E("book E", "pressE", 10.9);
 
-    // std::string str = A.toFileStr();
-    // Book E;
-    // std::stringstream ss(str);
-    // std::vector<std::string> vec1;
-    // std::string temp;
-    // while(std::getline(ss,temp,'#')){
-    //     if(temp.empty()){
-    //         continue;
-    //     }
-    //     vec1.push_back(temp);
-    // }
+    Inventory myInventory;
+    myInventory.addBook(A, 1000); // add 1000 "book A" into myInventory
+    myInventory.addBook(B, 1000);
+    myInventory.addBook(C, 10);
+    
+    myInventory.writeToFile(); // ->create a file named "inventory0.csv" 
 
-    // E.initFromFileStr(vec1);
-    // BookSet bs;
-    // bs.addBook(A);
-    // bs.addBook(B);
-    // bs.addBook(C);
+    Inventory myInventoryCopy;
+    myInventoryCopy.getFromFile(myInventoryCopy.path / "inventory0.csv");
 
-    // bs.toFile();
-    Inventory inven;
-    inven.addBook(A, 100);
-    inven.addBook(B, 100);
-    inven.addBook(C, 100);
-    inven.addBook(D, 100);
+    myInventoryCopy.writeToFile(); // ->create a dir named "inventory1.csv" 
 
-    // inven.writeToFile();
+    std::cout << myInventory.toString() << '\n';
+    std::cout << myInventoryCopy.toString() << '\n';
 
-    // Inventory invenCopy;
-    // invenCopy.getFromFile(invenCopy.path / "inven1.csv");
-    // std::cout<<invenCopy.toString();
-    BookLib lib;
-    lib.addBook(A, 20); // 200
-    lib.addBook(B, 30); // 600
-    lib.addBook(C, 20); // 150
-    lib.addBook(D, 10); // 0
 
-    // BookLib testLib;
+    IndividualMem indMem1("indMem1", 2, 100);
+    IndividualMem indMem2("indMem2", 3, 200);
+    IndividualMem indMem3("indMem3", 1, 100);
 
-    // std::string str = lib.toFileStr();
+    BookLib forAllIndMem;
+    forAllIndMem.addBook(A, 10);
+    forAllIndMem.addBook(A, 20);
+    forAllIndMem.removeBook(A, 10);
+    forAllIndMem.addBook(C, 20);
+    forAllIndMem.addBook(D, 10);
 
-    // std::stringstream ss(str);
-    // std::vector<std::string> vec1;
-    // std::string temp;
-    // while(std::getline(ss,temp,'#')){
-    //     if(temp.empty()){
-    //         continue;
-    //     }
-    //     vec1.push_back(temp);
-    // }
+    indMem1.setLackList(forAllIndMem);
+    indMem2.setLackList(forAllIndMem);
+    indMem3.setLackList(forAllIndMem);
 
-    // testLib.initFromFileStr(vec1);
+    CorporateMem corMem1("company1", 3, 1000);
+    BookLib forCorMem1;
+    forCorMem1.addBook(A, 950);
+    forCorMem1.addBook(D, 100);
+    corMem1.setWonderList(forCorMem1);
+    Intention inten1;
+    inten1.addIndLack(indMem1);
+    inten1.addIndLack(indMem2);
 
-    // std::cout << lib.toString() <<'\n' <<testLib.toString();
-    Sale s(inven);
-    // s.normalBuy("xiaoming", lib);
+    inten1.addCorWonder(corMem1);
 
-    // IndividualMem inMem("Wang", 2, 100);
-    // CorporateMem corMem("YuzuSoft", 3, 1000);
-    // CorporateMem corMem2("SB", 3, 1000);
+    inten1.writeToFile(); // create a dir named "intention0"
 
-    // s.indMemBuy(inMem, lib, 500);
-    // s.corMemBuy(corMem, lib, 500);
-    // s.corMemBuy(corMem2,lib,100);
-    // std::cout << s.toString() + '\n';
-    // std::cout << inven.toString();
+    Intention inten1Copy;
+    inten1Copy.initFromFile(inten1Copy.path / "intention0");
+    inten1Copy.addIndLack(indMem3);
+    inten1Copy.writeToFile(); //create a dir named "intention1"
 
-    s.initFromFile(s.path/"sale1");
-    std::cout<<s.toString();
-    s.writeToFile();
-    // lib.toFile();
 
-    // lib.addBook(A, 20);
-    // lib.removeBook(C, 20);
+    Purchasing purchase1;
+    purchase1.purchaseBook(D, 100);
+    purchase1.purchaseBook(E, 100);
+    purchase1.returnBook(A, 100);
+    purchase1.writeToFile(); //create a dir named "purchasing0"
 
-    // lib.toFile();
-    // Inventory inven1;
-    // inven1.addBook(A,10);
-    // inven1.addBook(A,10);
-    // inven1.addBook(A,10);
-    // inven1.addBook(B,10);
-    // // inven1.toFile();
-    // Purchasing p1;
-    // p1.initFromFile(p1.path / "purchasing0");
-    // std::cout<<p1.toString();
-    // IndividualMem m1("Li", 2, 30);
-    // CorporateMem m2("Wang", 1, 5);
-    // CorporateMem m3("Xi");
-    // m1.getLackedLib()->addBook(A, 10);
-    // m1.getLackedLib()->addBook(A, 10);
-    // m1.getLackedLib()->addBook(A, 10);
-    // m1.getLackedLib()->addBook(B, 10);
-    // // // std::cout << m1.toString();std::cout<<'\n';
-    // // // std::cout << m2.toString();std::cout<<'\n';
-    // // // std::cout << m3.toString();std::cout<<'\n';
+    Purchasing purchase1Copy;
+    purchase1Copy.initFromFile(purchase1Copy.path / "purchasing0");
 
-    // m2.getWonderedLib()->addBook(C,100);
+    BookLib libForSale;
+    libForSale.addBook(A, 10);
+    libForSale.addBook(B, 100);
+    libForSale.addBook(E, 100);
 
-    // m3.getWonderedLib()->addBook(B,20);
-
-    // Intention intent;
-    // intent.addIndLack(m1);
-    // intent.addCorWonder(m2);
-    // intent.addCorWonder(m3);
-    // std::cout<<intent.toString()<<std::endl;
-    // intent.writeToFile();
-
-    // Intention in1;
-    // in1.initFromFile(in1.path / "intention0");
-    // std::cout<<in1.toString();
+    Sale sl(myInventory);
+    sl.normalBuy("CustomerA", libForSale);
+    sl.indMemBuy(indMem1, libForSale, 100);
+    sl.corMemBuy(corMem1, libForSale, 200);
+    sl.writeToFile();
+     
     std::cin.get();
     return 0;
 }

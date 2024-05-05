@@ -29,6 +29,7 @@ private:
 
 public:
     IndividualMem(std::string name, int level = 0, int points = 0);
+    void setLackList(BookLib& lib);
     BookLib *getLackedLib() const;
     std::string toString() const override;
     ~IndividualMem();
@@ -41,6 +42,7 @@ private:
 
 public:
     CorporateMem(std::string name, int level = 0, int points = 0);
+    void setWonderList(BookLib& lib);
     BookLib *getWonderedLib() const;
     std::string toString() const override;
     ~CorporateMem();

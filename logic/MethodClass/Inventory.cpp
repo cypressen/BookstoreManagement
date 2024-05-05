@@ -11,7 +11,7 @@ void Inventory::writeToFile() const
 
     std::ofstream ofile;
 
-    std::string preName = "inven";
+    std::string preName = "inventory";
     std::string fomat = ".csv";
     std::string filename;
     int i = 0;
