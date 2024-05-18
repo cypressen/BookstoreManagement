@@ -17,6 +17,7 @@ private:
 
 public:
     const std::filesystem::path path = targetDir / "src/Intention";
+
     Intention();
     ~Intention();
     void addIndLack(const IndividualMem &mem);
