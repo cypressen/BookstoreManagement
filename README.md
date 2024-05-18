@@ -5,6 +5,6 @@
   在你开始的工作前
   - 根据tutor video完成vs2022项目的环境配置，保证最后能够运行test.cpp并且生成src文件
   - 请阅读在`MethodClass`文件夹下的`EXAMPLE.h`文件和`EXAMPLE.cpp`文件了解关于题目要求的编写规范
-  - 阅读`notation.txt`了解需要实现的功能
+  - 阅读`notice.txt`了解需要实现的功能
 
   **开始你的工作！**
