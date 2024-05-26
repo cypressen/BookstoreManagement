@@ -136,6 +136,19 @@ double Sale::corMemBuy(CorporateMem &mem, const BookLib &bookList, int points)
     return bill;
 }
 
+void Sale::setProDis(double dis){
+    discountForPromotion = dis;
+}
+
+void Sale::setMemDis(double d1, double d2){
+    discountForLevel = d1;
+    discountForCorp = d2;
+}
+
+void Sale::setPtDis(double dis){
+    discountForPoints = dis;
+}
+
 std::string Sale::toString() const
 {
 

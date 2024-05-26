@@ -5,6 +5,8 @@
 #include "Member.h"
 #include "Intention.h"
 #include "Sale.h"
+#include "Promotion.h"
+#include"Members.h"
 #include <iostream>
 
 #include <filesystem>
@@ -29,17 +31,16 @@ int main(int argc, char const *argv[])
     myInventory.addBook(A, 1000); // add 1000 "book A" into myInventory
     myInventory.addBook(B, 1000);
     myInventory.addBook(C, 10);
-    
-    myInventory.writeToFile(); // ->create a file named "inventory0.csv" 
+
+    myInventory.writeToFile(); // ->create a file named "inventory0.csv"
 
     Inventory myInventoryCopy;
     myInventoryCopy.getFromFile(myInventoryCopy.path / "inventory0.csv");
 
-    myInventoryCopy.writeToFile(); // ->create a dir named "inventory1.csv" 
+    myInventoryCopy.writeToFile(); // ->create a dir named "inventory1.csv"
 
     std::cout << myInventory.toString() << '\n';
     std::cout << myInventoryCopy.toString() << '\n';
-
 
     IndividualMem indMem1("indMem1", 2, 100);
     IndividualMem indMem2("indMem2", 3, 200);
@@ -65,6 +66,20 @@ int main(int argc, char const *argv[])
     inten1.addIndLack(indMem1);
     inten1.addIndLack(indMem2);
 
+    Members mems;
+    mems.addIndMem(indMem1);
+    mems.addIndMem(indMem2);
+    mems.addIndMem(indMem3);
+    mems.addCorMem(corMem1);
+    mems.writeToFile();
+
+    Members mems2;
+    mems2.initFromFile(mems2.path / "members0");
+    mems2.removeIndMem(indMem1);
+    mems2.setLevAndPoi(indMem2,20,999);
+    mems2.writeToFile();
+
+    
     inten1.addCorWonder(corMem1);
 
     inten1.writeToFile(); // create a dir named "intention0"
@@ -72,14 +87,13 @@ int main(int argc, char const *argv[])
     Intention inten1Copy;
     inten1Copy.initFromFile(inten1Copy.path / "intention0");
     inten1Copy.addIndLack(indMem3);
-    inten1Copy.writeToFile(); //create a dir named "intention1"
-
+    inten1Copy.writeToFile(); // create a dir named "intention1"
 
     Purchasing purchase1;
     purchase1.purchaseBook(D, 100);
     purchase1.purchaseBook(E, 100);
     purchase1.returnBook(A, 100);
-    purchase1.writeToFile(); //create a dir named "purchasing0"
+    purchase1.writeToFile(); // create a dir named "purchasing0"
 
     Purchasing purchase1Copy;
     purchase1Copy.initFromFile(purchase1Copy.path / "purchasing0");
@@ -94,7 +108,19 @@ int main(int argc, char const *argv[])
     sl.indMemBuy(indMem1, libForSale, 100);
     sl.corMemBuy(corMem1, libForSale, 200);
     sl.writeToFile();
-     
+
+    Promotion prt1(sl);
+    prt1.setMemDis(999, 999);
+    prt1.setProDis(999);
+    prt1.setPtDis(999);
+    prt1.writeToFile();
     std::cin.get();
+
+    Promotion prt2(sl);
+    prt2.initFromFile(prt2.path / "promotion0.csv");
+    prt2.setProDis(2233333);
+    prt2.writeToFile();
+
+
     return 0;
 }

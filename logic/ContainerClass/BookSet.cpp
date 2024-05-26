@@ -4,7 +4,6 @@ BookSet::BookSet(){
 }
 BookSet::~BookSet(){
     delete bookSet;
-    bookSet = nullptr;
 }
 
 void BookSet::addBook(const Book& b){

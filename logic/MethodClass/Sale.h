@@ -17,9 +17,8 @@ private:
     saleMap *saleForNormal;
     saleMap *saleForIndMem;
     saleMap *saleForCorMem;
-
     Inventory *linkedInventory;
-    
+
     std::filesystem::path currentPath = std::filesystem::path(__FILE__);
     std::filesystem::path targetDir = currentPath.parent_path().parent_path().parent_path();
 
@@ -30,6 +29,11 @@ public:
     double normalBuy(const std::string &name, const BookLib &bookList);
     double indMemBuy(IndividualMem &mem, const BookLib &bookList, int points = 0);
     double corMemBuy(CorporateMem &mem, const BookLib &bookList, int points = 0);
+    
+    void setProDis(double dis);
+    void setMemDis(double levDis,double corDis);
+    void setPtDis(double dis);
+    
     std::string toString() const;
 
     void writeToFile() const;

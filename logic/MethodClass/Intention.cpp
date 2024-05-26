@@ -19,7 +19,7 @@ void Intention::addIndLack(const IndividualMem &mem)
     {
         return;
     }
-    individualLack->push_back(mem.toString());
+    individualLack->push_back(mem.toFileString());
 }
 
 void Intention::addCorWonder(const CorporateMem &mem)
@@ -28,7 +28,7 @@ void Intention::addCorWonder(const CorporateMem &mem)
     {
         return;
     }
-    corporateWonder->push_back(mem.toString());
+    corporateWonder->push_back(mem.toFileString());
 }
 
 std::string Intention::toString() const
