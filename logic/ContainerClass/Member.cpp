@@ -75,10 +75,7 @@ IndividualMem::IndividualMem(std::string name, int level, int points)
     lack = new BookLib;
 }
 
-IndividualMem::~IndividualMem()
-{
-    
-}
+
 
 void IndividualMem::setLackList(BookLib &lib)
 {
@@ -102,10 +99,6 @@ CorporateMem::CorporateMem(std::string name, int level, int points)
     wonder = new BookLib;
 }
 
-CorporateMem::~CorporateMem()
-{
-    
-}
 
 void CorporateMem::setWonderList(BookLib &lib)
 {
