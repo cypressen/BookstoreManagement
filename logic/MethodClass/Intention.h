@@ -3,29 +3,33 @@
 
 #include "Member.h"
 #include <vector>
-#include <filesystem>
-#include <fstream>
-class Intention
+#include "Serializable.h"
+class Intention : public Serializeble
 {
 
+/*
+    输出格式
+    姓名 缺书书单
+    考虑std::vector<std::vector<std::string>
+    一个单位的toSringVec返回一个vector
+    单位对应的是Member
+    所以Member要实现一个toStringVec 返回整合好了的vector 然后再通过筛选组成新的vector 再push_back
+*/
 private:
     std::vector<std::string> *individualLack;
     std::vector<std::string> *corporateWonder;
 
-    std::filesystem::path currentPath = std::filesystem::path(__FILE__);
-    std::filesystem::path targetDir = currentPath.parent_path().parent_path().parent_path();
-
 public:
-    const std::filesystem::path path = targetDir / "src/Intention";
+    const std::filesystem::path path = targetDir / "Intention";
 
     Intention();
     ~Intention();
     void addIndLack(const IndividualMem &mem);
     void addCorWonder(const CorporateMem &mem);
     std::string toString() const;
-
-    void writeToFile() const;
-    void initFromFile(std::filesystem::path ph);
+    std::vector<std::vector<std::string>> toStringVecInd() const;
+    void write() const;
+    void init(std::filesystem::path ph);
 };
 
 #endif

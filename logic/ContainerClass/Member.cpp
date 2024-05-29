@@ -69,6 +69,16 @@ void Member::initFromFileString(const std::string & str){
 
 }
 
+std::vector<std::string> Member::toStringVec() const{
+    std::vector<std::string> strVec;
+    strVec.push_back(name);
+    strVec.push_back(std::to_string(level));
+    strVec.push_back(std::to_string(points));
+    return strVec;
+}
+
+
+
 IndividualMem::IndividualMem(std::string name, int level, int points)
     : Member(name, level, points)
 {
@@ -92,12 +102,21 @@ BookLib *IndividualMem::getLackedLib() const
 //     return str;
 // }
 
+std::vector<std::string> IndividualMem::toStringVec() const{
+    std::vector<std::string> strVec;
+    strVec.push_back(name);
+    strVec.push_back(std::to_string(level));
+    strVec.push_back(std::to_string(points));
+    strVec.push_back(getLackedLib()->toString());
+    return strVec;
+}
 
 CorporateMem::CorporateMem(std::string name, int level, int points)
     : Member(name, level, points)
 {
     wonder = new BookLib;
 }
+
 
 
 void CorporateMem::setWonderList(BookLib &lib)
@@ -110,12 +129,14 @@ BookLib *CorporateMem::getWonderedLib() const
     return wonder;
 }
 
-// std::string CorporateMem::toString() const
-// {
-
-//     std::string str = "name: " + name + " level: " + std::to_string(level) + " points: " + std::to_string(points) + " " + wonder->toString();
-//     return str;
-// }
+std::vector<std::string> CorporateMem::toStringVec() const{
+    std::vector<std::string> strVec;
+    strVec.push_back(name);
+    strVec.push_back(std::to_string(level));
+    strVec.push_back(std::to_string(points));
+    strVec.push_back(getWonderedLib()->toString());
+    return strVec;
+}
 
 size_t MemberHasher::operator()(const Member &m) const
 {

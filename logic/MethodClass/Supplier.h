@@ -3,26 +3,24 @@
 
 #include <vector>
 #include <iostream>
-#include <filesystem>
-#include <fstream>
+#include "Serializable.h"
 #include <algorithm>
 
-class Supplier
+class Supplier : public Serializeble
 {
 
 private:
     std::vector<std::string> *buckets;
-    std::filesystem::path currentPath = std::filesystem::path(__FILE__);
-    std::filesystem::path targetDir = currentPath.parent_path().parent_path().parent_path();
+
 
 public:
-    const std::filesystem::path path = targetDir / "src/Supplier";
+    const std::filesystem::path path = targetDir / "Supplier";
     Supplier();
     ~Supplier();
     void add(const std::string name);
     void remove(const std::string name);
-    void writeToFile() const;
-    void initFromFile(std::filesystem::path ph);
+    void write() const;
+    void init(std::filesystem::path ph);
 };
 
 #endif

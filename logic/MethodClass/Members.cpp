@@ -50,7 +50,7 @@ void Members::setLevAndPoi(CorporateMem &mem, int level, int points)
     copy.changePoints(points);
     addCorMem(copy);
 }
-void Members::writeToFile() const
+void Members::write() const
 {
     std::string preName = "members";
     int i = 0;
@@ -79,7 +79,7 @@ void Members::writeToFile() const
     ofile.close();
 }
 
-void Members::initFromFile(std::filesystem::path ph)
+void Members::init(std::filesystem::path ph)
 {
     std::ifstream ifile;
     std::string line;

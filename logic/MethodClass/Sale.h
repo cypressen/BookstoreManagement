@@ -4,10 +4,21 @@
 #include "Member.h"
 #include "BookLib.h"
 #include "Inventory.h"
+#include "Serializable.h"
 #include <unordered_map>
 
 using saleMap = std::unordered_map<std::string, std::string>;
-class Sale
+
+
+/*
+    输出格式
+    分为显示当前折扣
+    再分别显示
+    普通顾客购买 名称 购买的书 总价格
+    个人会员购买 名称 购买的书 总价格
+    企业会员购买 名称 购买的书 总价格
+*/
+class Sale : public Serializeble
 {
 private:
     double discountForPromotion;
@@ -19,11 +30,10 @@ private:
     saleMap *saleForCorMem;
     Inventory *linkedInventory;
 
-    std::filesystem::path currentPath = std::filesystem::path(__FILE__);
-    std::filesystem::path targetDir = currentPath.parent_path().parent_path().parent_path();
+
 
 public:
-    const std::filesystem::path path = targetDir / "src/Sale";
+    const std::filesystem::path path = targetDir / "Sale";
     Sale(Inventory &inven);
     ~Sale();
     double normalBuy(const std::string &name, const BookLib &bookList);
@@ -36,8 +46,8 @@ public:
     
     std::string toString() const;
 
-    void writeToFile() const;
-    void initFromFile(std::filesystem::path ph);
+    void write() const;
+    void init(std::filesystem::path ph);
 };
 
 #endif

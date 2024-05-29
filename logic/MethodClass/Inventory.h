@@ -2,19 +2,23 @@
 #define INVENTORY_H
 
 #include "BookLib.h"
-#include <fstream>
-#include <filesystem>
-class Inventory : public BookLib
+#include "Serializable.h"
+
+/*
+    输出格式:
+    书名 出版社 价格 库存数量
+    Inventory共有继承书库 则需要书库的toStringVec()
+*/
+class Inventory : public BookLib, public Serializeble
 {
 private:
-    std::filesystem::path currentPath = std::filesystem::path(__FILE__);
-    std::filesystem::path targetDir = currentPath.parent_path().parent_path().parent_path();
+
 
 public:
-    const std::filesystem::path  path = targetDir / "src/Inventory";
+    const std::filesystem::path path = targetDir / "Inventory";
     Inventory();
-    void writeToFile() const;
-    void getFromFile(std::filesystem::path ph);
+    void write() const;
+    void init(std::filesystem::path ph);
 };
 class BookList : public BookLib
 {

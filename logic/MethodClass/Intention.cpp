@@ -46,7 +46,19 @@ std::string Intention::toString() const
     return str;
 }
 
-void Intention::writeToFile() const
+std::vector<std::vector<std::string>> Intention::toStringVecInd() const
+{
+    std::vector<std::vector<std::string>> vecVec;
+    for (const auto &string : *individualLack)
+    {
+        if(string.empty()){
+            continue;
+        }
+        
+    }
+    return vecVec;
+}
+void Intention::write() const
 {
 
     std::string preName = "intention";
@@ -77,7 +89,7 @@ void Intention::writeToFile() const
     ofile.close();
 }
 
-void Intention::initFromFile(std::filesystem::path ph)
+void Intention::init(std::filesystem::path ph)
 {
     std::ifstream ifile;
     std::string temp;

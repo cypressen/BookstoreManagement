@@ -19,7 +19,7 @@ void Supplier::remove(const std::string name){
    }
 }
 
-void Supplier::writeToFile() const{
+void Supplier::write() const{
     std::ofstream ofile;
     std::string preName = "supplier";
     std::string format = ".csv";
@@ -39,7 +39,7 @@ void Supplier::writeToFile() const{
 }
 
 
-void Supplier::initFromFile(std::filesystem::path ph){
+void Supplier::init(std::filesystem::path ph){
     std::ifstream ifile;
     ifile.open(ph,std::ios::in);
     std::string line;

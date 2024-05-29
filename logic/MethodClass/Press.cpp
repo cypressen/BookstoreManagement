@@ -19,7 +19,7 @@ void Press::remove(const std::string name){
    }
 }
 
-void Press::writeToFile() const{
+void Press::write() const{
     std::ofstream ofile;
     std::string preName = "press";
     std::string format = ".csv";
@@ -39,7 +39,7 @@ void Press::writeToFile() const{
 }
 
 
-void Press::initFromFile(std::filesystem::path ph){
+void Press::init(std::filesystem::path ph){
     std::ifstream ifile;
     ifile.open(ph,std::ios::in);
     std::string line;

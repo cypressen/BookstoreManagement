@@ -28,7 +28,7 @@ std::string Purchasing::toString() const
     return "puchase: \n" + libPurchase->toString() + "\nreturn: \n"+libReturn->toString();
 }
 
-void Purchasing::writeToFile() const
+void Purchasing::write() const
 {
     std::string preName = "purchasing";
     int i = 0;
@@ -52,7 +52,7 @@ void Purchasing::writeToFile() const
     ofile.close();
 }
 
-void Purchasing::initFromFile(std::filesystem::path ph)
+void Purchasing::init(std::filesystem::path ph)
 {
     std::ifstream ifile;
 

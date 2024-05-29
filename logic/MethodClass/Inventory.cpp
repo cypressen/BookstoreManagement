@@ -6,7 +6,7 @@ Inventory::Inventory()
     std::filesystem::create_directories(path);
 }
 
-void Inventory::writeToFile() const
+void Inventory::write() const
 {
 
     std::ofstream ofile;
@@ -29,7 +29,7 @@ void Inventory::writeToFile() const
     ofile.close();
 }
 
-void Inventory::getFromFile(std::filesystem::path ph)
+void Inventory::init(std::filesystem::path ph)
 {
     std::ifstream ifile;
     ifile.open(ph, std::ios::in);

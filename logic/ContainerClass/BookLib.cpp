@@ -51,6 +51,9 @@ std::unordered_map<Book, amount, BookHasher> *BookLib::returnMap() const
 
 std::string BookLib::toString() const
 {
+    if(lib->empty()){
+        return "NULL";
+    }
     std::string str = "Lib: ";
     for (const auto &item : *lib)
     {

@@ -164,7 +164,7 @@ std::string Sale::toString() const
     return str;
 }
 
-void Sale::writeToFile() const
+void Sale::write() const
 {
     std::ofstream ofile;
     std::string preName = "sale";
@@ -208,7 +208,7 @@ void Sale::writeToFile() const
     ofile.close();
 }
 
-void Sale::initFromFile(std::filesystem::path ph)
+void Sale::init(std::filesystem::path ph)
 {
     std::ifstream ifile;
     std::string temp;

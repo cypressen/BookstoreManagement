@@ -26,7 +26,7 @@ void Promotion::setPtDis(double dis)
     linkedSale->setPtDis(dis);
 }
 
-void Promotion::writeToFile() const
+void Promotion::write() const
 {
     std::ofstream ofile;
     std::string preName = "promotion";
@@ -47,7 +47,7 @@ void Promotion::writeToFile() const
     ofile.close();
 }
 
-void Promotion::initFromFile(std::filesystem::path ph)
+void Promotion::init(std::filesystem::path ph)
 {
     std::ifstream ifile;
     ifile.open(ph, std::ios::in);

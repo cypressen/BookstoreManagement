@@ -3,22 +3,24 @@
 
 #include "Member.h"
 #include <unordered_set>
-#include <filesystem>
-#include <fstream>
+#include "Serializable.h"
 
+/*
+    输出格式
+    昵称 等级 积分
+    同样需要Member实现toStringVec()
+
+*/
 using memset = std::unordered_set<Member, MemberHasher>;
 
-class Members
+class Members  : public Serializeble
 {
 private:
     memset *indMems;
     memset *corMems;
 
-    std::filesystem::path currentPath = std::filesystem::path(__FILE__);
-    std::filesystem::path targetDir = currentPath.parent_path().parent_path().parent_path();
-
 public:
-    const std::filesystem::path path = targetDir / "src/Members";
+    const std::filesystem::path path = targetDir / "Members";
     Members();
     ~Members();
     void addIndMem(const IndividualMem &mem);
@@ -29,8 +31,8 @@ public:
     void setLevAndPoi(IndividualMem &mem, int level, int points);
     void setLevAndPoi(CorporateMem &mem, int level, int points);
 
-    void writeToFile() const;
-    void initFromFile(std::filesystem::path ph);
+    void write() const;
+    void init(std::filesystem::path ph);
 };
 
 #endif

@@ -14,7 +14,7 @@ public:
     Member(std::string name, int level = 0, int points = 0);
     Member() = default;
 
-    Member(const Member& other);
+    Member(const Member &other);
 
     void changeLevel(int lev);
     void changePoints(int poi);
@@ -28,7 +28,7 @@ public:
     std::string toFileString() const;
     void initFromFileString(const std::string &str);
 
-    // virtual std::string toString() const = 0;
+    virtual std::vector<std::string> toStringVec() const;
 };
 
 class IndividualMem : public Member
@@ -41,7 +41,7 @@ public:
     IndividualMem() = default;
     void setLackList(BookLib &lib);
     BookLib *getLackedLib() const;
-    // std::string toString() const override;
+    std::vector<std::string> toStringVec() const;
 };
 
 class CorporateMem : public Member
@@ -54,7 +54,8 @@ public:
     CorporateMem() = default;
     void setWonderList(BookLib &lib);
     BookLib *getWonderedLib() const;
-    // std::string toString() const override;
+
+    std::vector<std::string> toStringVec() const;
 };
 
 class MemberHasher
