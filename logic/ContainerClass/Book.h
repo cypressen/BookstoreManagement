@@ -11,12 +11,13 @@ private:
     double price;
 
 public:
-    Book(const std::string &title, const std::string &press,double price = 0.0);
+    Book(const std::string &title, const std::string &press = "",double price = 0.0);
     Book() = default;
     std::string getID() const; // return title + press
     void setPrice(double price);
     double getPrice() const; 
     std::string getTitle() const;
+    std::string getPress() const;
     bool operator==(const Book &other) const; // 辅助用于BookHasher
     std::string toFileStr()const; // 转换为用于写入文件的字符串
     void initFromFileStr(const std::vector<std::string>& line); // 从对应的字符串初始化该对象

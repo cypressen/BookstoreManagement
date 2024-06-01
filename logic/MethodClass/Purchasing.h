@@ -1,4 +1,4 @@
-#ifndef PURCHASEING_H
+#ifndef PURCHASING_H
 #define PURCHASING_H
 
 #include "BookLib.h"
@@ -22,8 +22,13 @@ public:
     ~Purchasing();
     void purchaseBook(const Book &book, int num);
     void returnBook(const Book &book, int num);
-    // void do(const BookLib&other); // merge
-    std::string toString()const;
+
+    void puchaseRemove(const Book &book, int num);
+    void returnRemove(const Book &book, int num);
+
+    BookLib* getLibPur() const;
+    BookLib* getLibRet() const;
+
 
     void write() const;
     void init(std::filesystem::path ph);

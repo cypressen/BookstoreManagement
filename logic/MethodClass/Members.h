@@ -11,13 +11,13 @@
     同样需要Member实现toStringVec()
 
 */
-using memset = std::unordered_set<Member, MemberHasher>;
+using memSet = std::unordered_set<Member, MemberHasher>;
 
 class Members  : public Serializeble
 {
 private:
-    memset *indMems;
-    memset *corMems;
+    memSet *indMems;
+    memSet *corMems;
 
 public:
     const std::filesystem::path path = targetDir / "Members";
@@ -31,6 +31,8 @@ public:
     void setLevAndPoi(IndividualMem &mem, int level, int points);
     void setLevAndPoi(CorporateMem &mem, int level, int points);
 
+    memSet* getIndSet()const;
+    memSet* getCorSet() const;
     void write() const;
     void init(std::filesystem::path ph);
 };

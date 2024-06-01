@@ -2,8 +2,8 @@
 
 Members::Members()
 {
-    indMems = new memset;
-    corMems = new memset;
+    indMems = new memSet;
+    corMems = new memSet;
     std::filesystem::create_directories(path);
 }
 
@@ -50,6 +50,13 @@ void Members::setLevAndPoi(CorporateMem &mem, int level, int points)
     copy.changePoints(points);
     addCorMem(copy);
 }
+
+memSet* Members::getIndSet()const{
+    return indMems;
+}
+memSet* Members::getCorSet() const{
+    return corMems;
+}
 void Members::write() const
 {
     std::string preName = "members";
@@ -81,6 +88,8 @@ void Members::write() const
 
 void Members::init(std::filesystem::path ph)
 {
+    indMems->clear();
+    corMems->clear();
     std::ifstream ifile;
     std::string line;
     ifile.open(ph / "indMems.csv", std::ios::in);

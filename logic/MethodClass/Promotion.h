@@ -24,6 +24,7 @@ public:
     void setMemDis(double levDis, double corDis);
     void setPtDis(double dis);
 
+    Sale* getSale() const;
     void write() const;
     void init(std::filesystem::path ph);
 };

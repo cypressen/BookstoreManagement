@@ -9,6 +9,8 @@ Supplier::~Supplier(){
 }
 
 void Supplier::add(const std::string name){
+    auto it = std::find(buckets->begin(),buckets->end(),name);
+    if(it == buckets->end())
    buckets->push_back(name);
 }
 
@@ -17,6 +19,9 @@ void Supplier::remove(const std::string name){
    if(it != buckets->end()){
     buckets->erase(it);
    }
+}
+std::vector<std::string>* Supplier::get() const{
+    return buckets;
 }
 
 void Supplier::write() const{
@@ -40,6 +45,7 @@ void Supplier::write() const{
 
 
 void Supplier::init(std::filesystem::path ph){
+    buckets->clear();
     std::ifstream ifile;
     ifile.open(ph,std::ios::in);
     std::string line;

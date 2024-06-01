@@ -9,6 +9,8 @@ Press::~Press(){
 }
 
 void Press::add(const std::string name){
+    auto it = std::find(buckets->begin(),buckets->end(),name);
+    if(it == buckets->end())
    buckets->push_back(name);
 }
 
@@ -19,6 +21,9 @@ void Press::remove(const std::string name){
    }
 }
 
+std::vector<std::string>* Press::get() const{
+    return buckets;
+}
 void Press::write() const{
     std::ofstream ofile;
     std::string preName = "press";
@@ -40,6 +45,7 @@ void Press::write() const{
 
 
 void Press::init(std::filesystem::path ph){
+       buckets->clear();
     std::ifstream ifile;
     ifile.open(ph,std::ios::in);
     std::string line;

@@ -6,7 +6,7 @@ Book::Book(const std::string &title, const std::string &press, double price)
 
 std::string Book::getID() const
 {
-    return title + press;
+    return title;
 }
 
 std::string Book::getTitle() const
@@ -18,7 +18,9 @@ double Book::getPrice() const
 {
     return price;
 }
-
+std::string Book::getPress()const{
+    return press;
+}
 void Book::setPrice(double price)
 {
     this->price = price;

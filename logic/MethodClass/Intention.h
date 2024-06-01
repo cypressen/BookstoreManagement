@@ -5,6 +5,7 @@
 #include "BookLib.h"
 #include <vector>
 #include "Serializable.h"
+#include <algorithm>
 class Intention : public Serializeble
 {
 
@@ -28,9 +29,13 @@ public:
     ~Intention();
     void addIndLack(const IndividualMem &mem,const BookLib& bookList);
     void addCorWonder(const CorporateMem &mem,const BookLib& bookList);
+    void rmInd(std::string& name);
+    void rmCor(std::string& name);
     //第一个元素为姓名 剩下的所有元素都为缺书情况
     std::vector<std::vector<std::string>>* toStringVecInd() const;
     std::vector<std::vector<std::string>>* toStringVecCor() const;
+
+    void push(const std::vector<std::string>& vec);
 
     void write() const;
     void init(std::filesystem::path ph);

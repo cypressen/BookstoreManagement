@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SubPGSaleMemBuy</class>
+ <widget class="QWidget" name="SubPGSaleMemBuy">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>746</width>
+    <height>673</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <widget class="QTableWidget" name="inventoryTable">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>260</y>
+     <width>311</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>Title</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Price</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Amount</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QLineEdit" name="lineMemName">
+   <property name="geometry">
+    <rect>
+     <x>107</x>
+     <y>51</y>
+     <width>108</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="membersTable">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>260</y>
+     <width>411</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>Name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Level</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Points</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Type</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="PBSearchMem">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>51</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Search</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="linePoints">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>51</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>228</x>
+     <y>51</y>
+     <width>81</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Individual</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Corporate</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>80</y>
+     <width>53</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Points</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="bookListTable">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>110</y>
+     <width>311</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>Title</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Price</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Amount</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="PBRm">
+   <property name="geometry">
+    <rect>
+     <x>648</x>
+     <y>83</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Remove</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PBConfirm">
+   <property name="geometry">
+    <rect>
+     <x>649</x>
+     <y>129</y>
+     <width>80</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Confirm</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PBCancel">
+   <property name="geometry">
+    <rect>
+     <x>649</x>
+     <y>229</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PBSelectMem">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>220</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Select</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PBAdd">
+   <property name="geometry">
+    <rect>
+     <x>648</x>
+     <y>50</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineAmount">
+   <property name="geometry">
+    <rect>
+     <x>589</x>
+     <y>69</y>
+     <width>31</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>31</width>
+     <height>23</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineSearch">
+   <property name="geometry">
+    <rect>
+     <x>449</x>
+     <y>69</y>
+     <width>108</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>579</x>
+     <y>49</y>
+     <width>45</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Amount</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PBSearchBook">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>50</y>
+     <width>80</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Search</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PBUpdate">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>130</y>
+     <width>91</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Refresh</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineSelected">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>220</y>
+     <width>201</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

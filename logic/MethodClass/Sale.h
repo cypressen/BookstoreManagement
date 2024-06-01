@@ -5,6 +5,7 @@
 #include "BookLib.h"
 #include "Inventory.h"
 #include "Serializable.h"
+#include <algorithm>
 #include <unordered_map>
 
 using saleMap = std::unordered_map<std::string, std::string>;
@@ -37,14 +38,26 @@ public:
     Sale(Inventory &inven);
     ~Sale();
     double normalBuy(const std::string &name, const BookLib &bookList);
-    double indMemBuy(IndividualMem &mem, const BookLib &bookList, int points = 0);
-    double corMemBuy(CorporateMem &mem, const BookLib &bookList, int points = 0);
+    double indMemBuy(Member &mem, const BookLib &bookList, int points = 0);
+    double corMemBuy(Member &mem, const BookLib &bookList, int points = 0);
     
+    void rmNor(const std::string& name);
+    void rmInd(const std::string& name);
+    void rmCor(const std::string& name);
+
     void setProDis(double dis);
     void setMemDis(double levDis,double corDis);
     void setPtDis(double dis);
     
+    double getPromotionDis() const;
+    double getPointsDis() const;
+    double getLevelDis() const;
+    double getCorDis() const;
     std::string toString() const;
+
+    saleMap* getNorSale();
+    saleMap* getIndSale();
+    saleMap* getCorSale();
 
     void write() const;
     void init(std::filesystem::path ph);

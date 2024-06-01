@@ -82,59 +82,30 @@ std::vector<std::string> Member::toStringVec() const{
 IndividualMem::IndividualMem(std::string name, int level, int points)
     : Member(name, level, points)
 {
-    lack = new BookLib;
 }
 
 
-
-void IndividualMem::setLackList(BookLib &lib)
-{
-    lack = &lib;
-}
-BookLib *IndividualMem::getLackedLib() const
-{
-    return lack;
-}
-
-// std::string IndividualMem::toString() const
-// {
-//     std::string str = "name: " + name + " level: " + std::to_string(level) + " points: " + std::to_string(points) + " " + lack->toString();
-//     return str;
-// }
 
 std::vector<std::string> IndividualMem::toStringVec() const{
     std::vector<std::string> strVec;
     strVec.push_back(name);
     strVec.push_back(std::to_string(level));
     strVec.push_back(std::to_string(points));
-    strVec.push_back(getLackedLib()->toString());
     return strVec;
 }
 
 CorporateMem::CorporateMem(std::string name, int level, int points)
     : Member(name, level, points)
 {
-    wonder = new BookLib;
 }
 
 
-
-void CorporateMem::setWonderList(BookLib &lib)
-{
-
-    wonder = &lib;
-}
-BookLib *CorporateMem::getWonderedLib() const
-{
-    return wonder;
-}
 
 std::vector<std::string> CorporateMem::toStringVec() const{
     std::vector<std::string> strVec;
     strVec.push_back(name);
     strVec.push_back(std::to_string(level));
     strVec.push_back(std::to_string(points));
-    strVec.push_back(getWonderedLib()->toString());
     return strVec;
 }
 

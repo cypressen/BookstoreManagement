@@ -8,7 +8,7 @@ BookLib::BookLib()
 BookLib::~BookLib()
 {
     delete lib;
-    lib = nullptr;
+    // lib = nullptr;
 }
 
 void BookLib::addBook(const Book &book, amount num)
@@ -49,10 +49,6 @@ std::unordered_map<Book, amount, BookHasher> *BookLib::returnMap() const
     return lib;
 }
 
-std::vector<std::string> BookLib::toStringVec() const{
-    std::vector<std::string> vec;
-    return vec;
-}
 
     std::string BookLib::toString() const
 {
@@ -60,7 +56,7 @@ std::vector<std::string> BookLib::toStringVec() const{
     {
         return "NULL";
     }
-    std::string str = "Lib: ";
+    std::string str = "List: ";
     for (const auto &item : *lib)
     {
         str += item.first.getTitle() + "[" + std::to_string(item.second) + "] ";
@@ -81,6 +77,7 @@ std::string BookLib::toFileStr() const
 
 void BookLib::initFromFileVec(const std::vector<std::string> &vec)
 {
+    lib->clear();
     std::vector<std::string> vecForBook;
     int count = 0;
     for (const auto &item : vec)

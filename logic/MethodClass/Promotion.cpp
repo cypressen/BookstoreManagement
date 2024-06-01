@@ -25,7 +25,9 @@ void Promotion::setPtDis(double dis)
     this->ptDis = dis;
     linkedSale->setPtDis(dis);
 }
-
+Sale* Promotion::getSale() const{
+    return linkedSale;
+}
 void Promotion::write() const
 {
     std::ofstream ofile;

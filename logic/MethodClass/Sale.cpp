@@ -23,6 +23,30 @@ Sale::~Sale()
     delete saleForCorMem;
 }
 
+
+void Sale::rmNor(const std::string& name){
+    auto it = saleForNormal->find(name);
+    // auto it = std::find(saleForNormal->begin(),saleForNormal->end(),name);
+    if(it != saleForNormal->end()){
+        saleForNormal->erase(it);
+    }
+}
+void Sale::rmInd(const std::string& name){
+    auto it = saleForIndMem->find(name);
+    if(it != saleForIndMem->end()){
+        saleForIndMem->erase(it);
+    }
+}
+void Sale::rmCor(const std::string& name)
+{
+    auto it = saleForCorMem->find(name);
+    if(it !=saleForCorMem->end()){
+        saleForCorMem->erase(it);
+    }
+}
+
+
+
 // helper For all customer
 double sale(Inventory &inven, const BookLib &bl, BookLib &record)
 {
@@ -56,38 +80,6 @@ double sale(Inventory &inven, const BookLib &bl, BookLib &record)
 }
 double Sale::normalBuy(const std::string &name, const BookLib &bl)
 {
-    // auto getMap = bl.returnMap();
-    // auto getInvenMap = linkedInventory->returnMap();
-
-    // BookLib record;
-    // double bill = 0.0;
-    // for (const auto &item : *getMap)
-    // {
-    //     if (getInvenMap->find(item.first) == getInvenMap->end())
-    //     {
-    //         std::cout << "This inventory doesn't contain this book: " << item.first.getTitle() << std::endl;
-    //         continue;
-    //     }
-    //     int getAmount = (*getInvenMap)[item.first];
-    //     int need = item.second;
-    //     if (getAmount <= need)
-    //     {
-    //         bill += getAmount * (item.first.getPrice());
-    //         linkedInventory->removeBook(item.first);
-    //         record.addBook(item.first, getAmount);
-    //     }
-    //     else
-    //     {
-    //         bill += need * (item.first.getPrice());
-    //         linkedInventory->removeBook(item.first, need);
-    //         record.addBook(item.first, need);
-    //     }
-    // }
-
-    // bill *= (1.0 - discountForPromotion);
-    // std::string strRec = "  Bill: " + std::to_string(bill) + "   " + record.toString();
-    // saleForNormal->insert(std::make_pair(name, strRec));
-    // return bill;
     BookLib record;
     double bill = sale(*linkedInventory, bl, record);
     bill *= (1.0 - discountForPromotion);
@@ -113,7 +105,7 @@ void discountForMem(double &bill, Member &mem, int points, double discountForPoi
         bill = 0;
     }
 }
-double Sale::indMemBuy(IndividualMem &mem, const BookLib &bookList, int points)
+double Sale::indMemBuy(Member &mem, const BookLib &bookList, int points)
 {
     BookLib record;
     double bill = sale(*linkedInventory, bookList, record);
@@ -124,16 +116,43 @@ double Sale::indMemBuy(IndividualMem &mem, const BookLib &bookList, int points)
     return bill;
 }
 
-double Sale::corMemBuy(CorporateMem &mem, const BookLib &bookList, int points)
+double Sale::corMemBuy(Member &mem, const BookLib &bookList, int points)
 {
     BookLib record;
     double bill = sale(*linkedInventory, bookList, record);
     bill *= (1.0 - discountForPromotion);
     discountForMem(bill, mem, points, discountForPoints, discountForLevel);
     bill *= (1.0 - discountForCorp);
-    std::string strRec = " Bill: " + std::to_string(bill) + "\t" + record.toString();
+    std::string strRec = " Bill: " + std::to_string(bill) + "  " + record.toString();
     saleForCorMem->insert(std::make_pair(mem.getName(), strRec));
     return bill;
+}
+
+
+double Sale::getCorDis() const{
+    return discountForCorp;
+}
+
+double Sale::getPromotionDis() const{
+    return discountForPromotion;
+}
+
+double Sale::getPointsDis() const{
+    return discountForPoints;
+}
+
+double Sale::getLevelDis() const{
+    return discountForLevel;
+}
+
+saleMap* Sale::getNorSale(){
+    return saleForNormal;
+}
+saleMap* Sale::getIndSale(){
+    return saleForIndMem;
+}
+saleMap* Sale::getCorSale(){
+    return saleForCorMem;
 }
 
 void Sale::setProDis(double dis){
@@ -212,6 +231,18 @@ void Sale::init(std::filesystem::path ph)
 {
     std::ifstream ifile;
     std::string temp;
+
+    discountForPromotion = 0.0;
+    discountForPoints = 0.05;
+    discountForLevel = 0.1;
+    discountForCorp = 0.3;
+
+    delete saleForNormal;
+    delete saleForIndMem;
+    delete saleForCorMem;
+    saleForNormal = new saleMap;
+    saleForIndMem = new saleMap;
+    saleForCorMem = new saleMap;
 
     ifile.open(ph / "discountData.csv", std::ios::in);
     std::getline(ifile, temp);

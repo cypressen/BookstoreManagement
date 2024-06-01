@@ -33,28 +33,18 @@ public:
 
 class IndividualMem : public Member
 {
-private:
-    BookLib *lack;
 
 public:
     IndividualMem(std::string name, int level = 0, int points = 0);
     IndividualMem() = default;
-    void setLackList(BookLib &lib);
-    BookLib *getLackedLib() const;
     std::vector<std::string> toStringVec() const;
 };
 
 class CorporateMem : public Member
 {
-private:
-    BookLib *wonder;
-
 public:
     CorporateMem(std::string name, int level = 0, int points = 0);
     CorporateMem() = default;
-    void setWonderList(BookLib &lib);
-    BookLib *getWonderedLib() const;
-
     std::vector<std::string> toStringVec() const;
 };
 

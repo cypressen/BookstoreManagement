@@ -23,9 +23,20 @@ void Purchasing::returnBook(const Book &book, int num)
     libReturn->addBook(book, num);
 }
 
-std::string Purchasing::toString() const
-{
-    return "puchase: \n" + libPurchase->toString() + "\nreturn: \n"+libReturn->toString();
+
+void Purchasing::puchaseRemove(const Book &book, int num){
+    libPurchase->removeBook(book,num);
+}
+void Purchasing::returnRemove(const Book &book, int num){
+    libReturn->removeBook(book,num);
+}
+
+
+BookLib* Purchasing::getLibPur() const{
+    return libPurchase;
+}
+BookLib* Purchasing::getLibRet() const{
+    return libReturn;
 }
 
 void Purchasing::write() const
@@ -54,6 +65,8 @@ void Purchasing::write() const
 
 void Purchasing::init(std::filesystem::path ph)
 {
+
+
     std::ifstream ifile;
 
     std::string temp;

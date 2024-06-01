@@ -43,6 +43,10 @@ std::vector<std::string> add(const Member &mem, const BookLib &bookList)
 
 void Intention::addIndLack(const IndividualMem &mem, const BookLib &bookList)
 {
+    std::string getName = mem.getName();
+    for(const auto& item : *  individualLack){
+        if(item[0] == getName)return;
+    }
     auto addition = add(mem, bookList);
     if (addition.empty())
         return;
@@ -51,6 +55,10 @@ void Intention::addIndLack(const IndividualMem &mem, const BookLib &bookList)
 
 void Intention::addCorWonder(const CorporateMem &mem, const BookLib &bookList)
 {
+    std::string getName = mem.getName();
+    for(const auto& item : *  corporateWonder){
+        if(item[0] == getName)return;
+    }
     auto addition = add(mem, bookList);
     if (addition.empty())
         return;
@@ -72,6 +80,29 @@ void Intention::addCorWonder(const CorporateMem &mem, const BookLib &bookList)
 //     return str;
 // }
 
+
+void Intention::rmInd(std::string& name){
+    individualLack->erase(std::remove_if(individualLack->begin(),individualLack->end(),[&name](const std::vector<std::string>& row)
+                                         {
+        return !row.empty()&&row[0] ==name;
+    }
+
+                                         ),individualLack->end());
+
+
+}
+void Intention::rmCor(std::string& name){
+    corporateWonder->erase(std::remove_if(corporateWonder->begin(),corporateWonder->end(),[&name](const std::vector<std::string>& row)
+                                         {
+                                             return !row.empty()&&row[0] ==name;
+                                         }
+
+                                         ),corporateWonder->end());
+
+
+
+}
+
 std::vector<std::vector<std::string>> *Intention::toStringVecInd() const
 {
     return individualLack;
@@ -80,6 +111,12 @@ std::vector<std::vector<std::string>> *Intention::toStringVecCor() const
 {
     return corporateWonder;
 }
+
+void Intention::push(const std::vector<std::string>& vec){
+    individualLack->push_back(vec);
+
+}
+
 void Intention::write() const
 {
 
@@ -122,6 +159,9 @@ void Intention::write() const
 
 void Intention::init(std::filesystem::path ph)
 {
+    individualLack->clear();
+    corporateWonder->clear();
+
     std::ifstream ifile;
     std::string line;
     ifile.open(ph / "individualLack.csv", std::ios::in);

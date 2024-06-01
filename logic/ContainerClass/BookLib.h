@@ -17,9 +17,9 @@ public:
 
     void addBook(const Book& book, amount num);
     void removeBook(const Book& book,amount num = -1);
+
     std::unordered_map<Book,amount,BookHasher> *returnMap() const;
 
-    std::vector<std::string> toStringVec() const;
     std::string toString() const;
     
     std::string toFileStr() const; // 转化为用于写入文件的字符串
