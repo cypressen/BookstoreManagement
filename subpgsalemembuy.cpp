@@ -99,16 +99,19 @@ void SubPGSaleMemBuy::updateBookList(){
     updateBookLibHelper(ui->bookListTable,bookList->returnMap());
 }
 
-void SubPGSaleMemBuy::bookSearch(){
+bool SubPGSaleMemBuy::bookSearch(){
+    if(ui->lineSearch->text().isEmpty())return false;
     std::string getTitle = ui->lineSearch->text().toStdString();
 
     updateInvenList();
-    int rowIndex =0;
+    int rowIndex =-1;
     for(int i = 0; i < ui->inventoryTable->rowCount();i+=1){
         if(getTitle == ui->inventoryTable->item(i,0)->text().toStdString()){
             rowIndex = i;
         }
     }
+if(rowIndex!= -1){
+
     QTableWidgetItem *nameBox = new QTableWidgetItem(*ui->inventoryTable->item(rowIndex,0));
     QTableWidgetItem *priceBox= new QTableWidgetItem(*ui->inventoryTable->item(rowIndex,1));
     QTableWidgetItem *amountBox= new QTableWidgetItem(*ui->inventoryTable->item(rowIndex,2));
@@ -119,12 +122,22 @@ void SubPGSaleMemBuy::bookSearch(){
     ui->inventoryTable->setItem(0,0,nameBox);
     ui->inventoryTable->setItem(0,1,priceBox);
     ui->inventoryTable->setItem(0,2,amountBox);
+    return true;
 
+}
+    else {
+    while (ui->inventoryTable->rowCount() > 0) {
+        ui->inventoryTable->removeRow(0);
+    }
+}
+
+return false;
 }
 
 void SubPGSaleMemBuy::bookAdd(){
-    int nums = std::stoi(ui->lineAmount->text().toStdString());
-    bookSearch();
+    if(ui->lineAmount->text().isEmpty())return;
+    int nums = ui->lineAmount->text().toInt();
+    if(!bookSearch())return;
     qDebug()<<nums;
     std::string title = ui->inventoryTable->item(0,0)->text().toStdString();
     double price = std::stod(ui->inventoryTable->item(0,1)->text().toStdString());
@@ -135,8 +148,9 @@ void SubPGSaleMemBuy::bookAdd(){
 }
 
 void SubPGSaleMemBuy::bookRemove(){
+    if(!bookSearch())return;
     int nums = std::stoi(ui->lineAmount->text().toStdString());
-    bookSearch();
+
     qDebug()<<nums;
     std::string title = ui->inventoryTable->item(0,0)->text().toStdString();
     double price = std::stod(ui->inventoryTable->item(0,1)->text().toStdString());
@@ -146,7 +160,7 @@ void SubPGSaleMemBuy::bookRemove(){
 }
 
 
-void SubPGSaleMemBuy::memSearch(){
+bool SubPGSaleMemBuy::memSearch(){
     std::string getName = ui->lineMemName->text().toStdString();
     updateMemList();
     int targetRow = -1;
@@ -174,12 +188,14 @@ void SubPGSaleMemBuy::memSearch(){
         ui->membersTable->setItem(0,1,levelBox);
         ui->membersTable->setItem(0,2,pointsBox);
         ui->membersTable->setItem(0,3,typeBox);
+        return true;
     }
     else{
         while(ui->membersTable->rowCount() > 0){
             ui->membersTable->removeRow(0);
         }
     }
+    return false;
 }
 
 void SubPGSaleMemBuy::updateLineSelected(){
@@ -188,7 +204,8 @@ void SubPGSaleMemBuy::updateLineSelected(){
 }
 
 void SubPGSaleMemBuy::memSelect(){
-    memSearch();
+    if(!memSearch())return;
+
     std::string name = ui->membersTable->item(0,0)->text().toStdString();
     int level = std::stoi(ui->membersTable->item(0,1)->text().toStdString());
     int points = std::stoi(ui->membersTable->item(0,2)->text().toStdString());

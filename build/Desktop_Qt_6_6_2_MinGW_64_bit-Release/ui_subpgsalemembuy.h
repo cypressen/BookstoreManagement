@@ -43,6 +43,9 @@ public:
     QPushButton *PBSearchBook;
     QPushButton *PBUpdate;
     QLineEdit *lineSelected;
+    QLabel *label_2;
+    QLabel *label_3;
+    QLabel *label_5;
 
     void setupUi(QWidget *SubPGSaleMemBuy)
     {
@@ -136,6 +139,15 @@ public:
         lineSelected = new QLineEdit(SubPGSaleMemBuy);
         lineSelected->setObjectName("lineSelected");
         lineSelected->setGeometry(QRect(110, 220, 201, 23));
+        label_2 = new QLabel(SubPGSaleMemBuy);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(110, 30, 53, 15));
+        label_3 = new QLabel(SubPGSaleMemBuy);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(110, 200, 53, 15));
+        label_5 = new QLabel(SubPGSaleMemBuy);
+        label_5->setObjectName("label_5");
+        label_5->setGeometry(QRect(450, 50, 53, 15));
 
         retranslateUi(SubPGSaleMemBuy);
 
@@ -144,13 +156,14 @@ public:
 
     void retranslateUi(QWidget *SubPGSaleMemBuy)
     {
-        SubPGSaleMemBuy->setWindowTitle(QCoreApplication::translate("SubPGSaleMemBuy", "Form", nullptr));
+        SubPGSaleMemBuy->setWindowTitle(QCoreApplication::translate("SubPGSaleMemBuy", "Member", nullptr));
         QTableWidgetItem *___qtablewidgetitem = inventoryTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Title", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = inventoryTable->horizontalHeaderItem(1);
         ___qtablewidgetitem1->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Price", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = inventoryTable->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Amount", nullptr));
+        lineMemName->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Name", nullptr));
         QTableWidgetItem *___qtablewidgetitem3 = membersTable->horizontalHeaderItem(0);
         ___qtablewidgetitem3->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Name", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = membersTable->horizontalHeaderItem(1);
@@ -176,9 +189,14 @@ public:
         PBCancel->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Cancel", nullptr));
         PBSelectMem->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Select", nullptr));
         PBAdd->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Add", nullptr));
+        lineSearch->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Title", nullptr));
         label_4->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Amount", nullptr));
         PBSearchBook->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Search", nullptr));
         PBUpdate->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Refresh", nullptr));
+        lineSelected->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Name", nullptr));
+        label_2->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Name", nullptr));
+        label_3->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Name", nullptr));
+        label_5->setText(QCoreApplication::translate("SubPGSaleMemBuy", "Title", nullptr));
     } // retranslateUi
 
 };

@@ -117,8 +117,10 @@ void PGPurchasing::search(){
                 tableWidget->setItem(0,0,titleBox);
                 tableWidget->setItem(0,1,pressBox);
                 tableWidget->setItem(0,2,numBox);
+                return;
             }
         }
+        clearTable(tableWidget);
 
 
     };

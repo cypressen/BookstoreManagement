@@ -59,7 +59,6 @@ public:
     QLineEdit *searchLine;
     QPushButton *PBUpdate;
     QPushButton *PBSave;
-    QPushButton *PBSaveAs;
     QPushButton *PBImport;
     QLineEdit *importLine;
     QLabel *label_7;
@@ -232,9 +231,6 @@ public:
         PBSave = new QPushButton(PGInventory);
         PBSave->setObjectName("PBSave");
         PBSave->setGeometry(QRect(20, 50, 80, 23));
-        PBSaveAs = new QPushButton(PGInventory);
-        PBSaveAs->setObjectName("PBSaveAs");
-        PBSaveAs->setGeometry(QRect(150, 50, 80, 23));
         PBImport = new QPushButton(PGInventory);
         PBImport->setObjectName("PBImport");
         PBImport->setGeometry(QRect(20, 100, 80, 23));
@@ -271,9 +267,9 @@ public:
         label_4->setText(QCoreApplication::translate("PGInventory", "\346\225\260\351\207\217", nullptr));
         PBAdd->setText(QCoreApplication::translate("PGInventory", "Add", nullptr));
         PBSearch->setText(QCoreApplication::translate("PGInventory", "Search", nullptr));
+        searchLine->setText(QCoreApplication::translate("PGInventory", "Title", nullptr));
         PBUpdate->setText(QCoreApplication::translate("PGInventory", "Refresh", nullptr));
         PBSave->setText(QCoreApplication::translate("PGInventory", "Save", nullptr));
-        PBSaveAs->setText(QCoreApplication::translate("PGInventory", "SAVE AS", nullptr));
         PBImport->setText(QCoreApplication::translate("PGInventory", "Import", nullptr));
         importLine->setText(QCoreApplication::translate("PGInventory", "\351\200\211\346\213\251\344\270\200\344\270\252\347\211\210\346\234\254", nullptr));
         label_7->setText(QCoreApplication::translate("PGInventory", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:700;\">\345\272\223\345\255\230</span></p></body></html>", nullptr));

@@ -21,7 +21,7 @@ public:
 
     void update();
 
-    void search();
+    bool search();
     void add();
     void change();
     void remove();

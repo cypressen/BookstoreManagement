@@ -202,6 +202,7 @@ public:
         ___qtablewidgetitem4->setText(QCoreApplication::translate("PGIntention", "\345\220\215\347\247\260", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = tableMembers->horizontalHeaderItem(1);
         ___qtablewidgetitem5->setText(QCoreApplication::translate("PGIntention", "\344\274\232\345\221\230\347\261\273\345\236\213", nullptr));
+        lineMemSearch->setText(QCoreApplication::translate("PGIntention", "Name", nullptr));
         PBMemSearch->setText(QCoreApplication::translate("PGIntention", "Search", nullptr));
         PBSelect->setText(QCoreApplication::translate("PGIntention", "Select", nullptr));
         comboMemBox->setItemText(0, QCoreApplication::translate("PGIntention", "Individual", nullptr));
@@ -220,9 +221,12 @@ public:
         QTableWidgetItem *___qtablewidgetitem11 = tableInven->horizontalHeaderItem(2);
         ___qtablewidgetitem11->setText(QCoreApplication::translate("PGIntention", "\346\225\260\351\207\217", nullptr));
         PBBookSearch->setText(QCoreApplication::translate("PGIntention", "Search", nullptr));
+        lineBookSearch->setText(QCoreApplication::translate("PGIntention", "Title", nullptr));
+        lineAmount->setText(QCoreApplication::translate("PGIntention", "0", nullptr));
         PBBookAdd->setText(QCoreApplication::translate("PGIntention", "Add", nullptr));
         PBBookRemove->setText(QCoreApplication::translate("PGIntention", "Remove", nullptr));
         PBSearch->setText(QCoreApplication::translate("PGIntention", "Search", nullptr));
+        lineSearch->setText(QCoreApplication::translate("PGIntention", "Name", nullptr));
         comboSearchBox->setItemText(0, QCoreApplication::translate("PGIntention", "Individual", nullptr));
         comboSearchBox->setItemText(1, QCoreApplication::translate("PGIntention", "Corporate", nullptr));
 

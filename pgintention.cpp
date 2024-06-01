@@ -146,8 +146,8 @@ void PGIntention::update(){
     refreshMems();
     refreshList();
 }
-void PGIntention::memSearch(){
-
+bool PGIntention::memSearch(){
+    if(ui->lineMemSearch->text().isEmpty())return false;
     std::string getName = ui->lineMemSearch->text().toStdString();
     refreshMems();
     int targetRow = -1;
@@ -175,17 +175,18 @@ void PGIntention::memSearch(){
         ui->tableMembers->insertRow(0);
         ui->tableMembers->setItem(0,0,nameBox);
         ui->tableMembers->setItem(0,1,typeBox);
+        return true;
     }
     else{
         while(ui->tableMembers->rowCount() > 0){
             ui->tableMembers->removeRow(0);
         }
     }
+    return false;
 }
 
 void PGIntention::memSelect(){
-    if(ui->lineMemSearch->text().isEmpty())return;
-    memSearch();
+    if(!memSearch())return;
     std::string name = ui->tableMembers->item(0,0)->text().toStdString();
     int selectedType = ui->comboMemBox->currentIndex();
     if(selectedType == 0){
@@ -202,9 +203,11 @@ void PGIntention::memSelect(){
     }
 }
 
-bool PGIntention::bookSearch(){
 
+bool PGIntention::bookSearch(){
+    if(ui->lineBookSearch->text().isEmpty())return false;
     std::string getTitle = ui->lineBookSearch->text().toStdString();
+
 
     refreshInven();
     int rowIndex =0;
@@ -256,16 +259,27 @@ void PGIntention::bookAdd(){
 void PGIntention::bookRemove(){
 if(ui->lineBookSearch->text().isEmpty())return;
     if(!bookList){
+
         return;
     }
     int nums = std::stoi(ui->lineAmount->text().toStdString());
-    bookSearch();
-    qDebug()<<nums;
-    std::string title = ui->tableInven->item(0,0)->text().toStdString();
-    double price = ui->tableInven->item(0,1)->text().toInt();
-    Book *book = new Book(title,"",price);
-    bookList->removeBook(*book,nums);
-    updateBookLibHelper(ui->tableBookList,bookList->returnMap());
+
+    if(!bookSearch()){
+            // bookList->returnMap();
+        std::string getTitle = ui->lineBookSearch->text().toStdString();
+            bookList->removeBook(Book(getTitle),nums);
+        updateBookLibHelper(ui->tableBookList,bookList->returnMap());
+            return;
+    }
+    else {
+        qDebug()<<nums;
+        std::string title = ui->tableInven->item(0,0)->text().toStdString();
+        double price = ui->tableInven->item(0,1)->text().toInt();
+        Book *book = new Book(title,"",price);
+        bookList->removeBook(*book,nums);
+        updateBookLibHelper(ui->tableBookList,bookList->returnMap());
+    }
+
 
 }
 
@@ -312,6 +326,7 @@ void PGIntention::search(){
 }
 
 void PGIntention::remove(){
+    if(ui->lineSearch->text().isEmpty())return;
     std::string getName = ui->lineSearch->text().toStdString();
     bool type = ui->comboSearchBox->currentIndex();
     if(!type){

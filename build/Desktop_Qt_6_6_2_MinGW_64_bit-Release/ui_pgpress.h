@@ -39,7 +39,7 @@ public:
     QTableWidget *tableWidget;
     QPushButton *PBRefresh;
     QLabel *label_2;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label;
     QLabel *labelCount;
@@ -108,18 +108,18 @@ public:
         label_2 = new QLabel(PGPress);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(-20, -10, 151, 81));
-        widget = new QWidget(PGPress);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(270, 210, 39, 17));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        layoutWidget1 = new QWidget(PGPress);
+        layoutWidget1->setObjectName("layoutWidget1");
+        layoutWidget1->setGeometry(QRect(270, 210, 39, 17));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget1);
         label->setObjectName("label");
 
         horizontalLayout_3->addWidget(label);
 
-        labelCount = new QLabel(widget);
+        labelCount = new QLabel(layoutWidget1);
         labelCount->setObjectName("labelCount");
 
         horizontalLayout_3->addWidget(labelCount);
@@ -137,6 +137,7 @@ public:
         lineVersion->setText(QCoreApplication::translate("PGPress", "\350\276\223\345\205\245\344\270\200\344\270\252\347\211\210\346\234\254", nullptr));
         PBSave->setText(QCoreApplication::translate("PGPress", "Save", nullptr));
         PBsearch->setText(QCoreApplication::translate("PGPress", "Search", nullptr));
+        lineSearch->setText(QString());
         PBAdd->setText(QCoreApplication::translate("PGPress", "Add", nullptr));
         PBRemove->setText(QCoreApplication::translate("PGPress", "Remove", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);

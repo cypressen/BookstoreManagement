@@ -35,11 +35,11 @@ public:
     void updateBookList();
     void updateLineSelected();
 
-    void bookSearch();
+    bool bookSearch();
     void bookAdd();
     void bookRemove();
 
-    void memSearch();
+    bool memSearch();
     void memSelect();
 
     void confirm();

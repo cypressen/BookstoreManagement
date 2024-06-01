@@ -178,6 +178,7 @@ public:
         label_3->setText(QCoreApplication::translate("PGMembers", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">\344\270\252\344\272\272\344\274\232\345\221\230</span></p></body></html>", nullptr));
         label_4->setText(QCoreApplication::translate("PGMembers", "<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">\344\274\201\344\270\232\344\274\232\345\221\230</span></p></body></html>", nullptr));
         PBSearch->setText(QCoreApplication::translate("PGMembers", "Search", nullptr));
+        lineName->setText(QCoreApplication::translate("PGMembers", "Name", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("PGMembers", "Individual", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("PGMembers", "Corporate", nullptr));
 

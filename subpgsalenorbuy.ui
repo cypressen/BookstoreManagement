@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Normal</string>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -63,6 +63,9 @@
      <width>108</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>Title</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="bookListTable">
@@ -192,6 +195,9 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="text">
+    <string>Name</string>
+   </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -204,6 +210,19 @@
    </property>
    <property name="text">
     <string>Name</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>120</y>
+     <width>53</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Title</string>
    </property>
   </widget>
  </widget>

@@ -84,29 +84,37 @@ void PGInventory::search()
 {
     if(ui->searchLine->text().isEmpty())return;
     updateWidget();
-    int rowIndex =0;
+    int rowIndex =-1;
     std::string title =ui->searchLine->text().toStdString();
     for(int i = 0; i < ui->tableWidget->rowCount();i+=1){
         if(title == ui->tableWidget->item(i,0)->text().toStdString()){
             rowIndex = i;
         }
     }
-    QTableWidgetItem *nameBox = new QTableWidgetItem(*ui->tableWidget->item(rowIndex,0));
-    QTableWidgetItem *pressBox= new QTableWidgetItem(*ui->tableWidget->item(rowIndex,1));
-    QTableWidgetItem *priceBox= new QTableWidgetItem(*ui->tableWidget->item(rowIndex,2));
-    QTableWidgetItem *amountBox= new QTableWidgetItem(*ui->tableWidget->item(rowIndex,3));
-    while (ui->tableWidget->rowCount() > 0) {
-        ui->tableWidget->removeRow(0);
+    if(rowIndex !=-1){
+        QTableWidgetItem *nameBox = new QTableWidgetItem(*ui->tableWidget->item(rowIndex,0));
+        QTableWidgetItem *pressBox= new QTableWidgetItem(*ui->tableWidget->item(rowIndex,1));
+        QTableWidgetItem *priceBox= new QTableWidgetItem(*ui->tableWidget->item(rowIndex,2));
+        QTableWidgetItem *amountBox= new QTableWidgetItem(*ui->tableWidget->item(rowIndex,3));
+        while (ui->tableWidget->rowCount() > 0) {
+            ui->tableWidget->removeRow(0);
+        }
+        ui->tableWidget->insertRow(0);
+        ui->tableWidget->setItem(0,0,nameBox);
+        ui->tableWidget->setItem(0,1,pressBox);
+        ui->tableWidget->setItem(0,2,priceBox);
+        ui->tableWidget->setItem(0,3,amountBox);
     }
-    ui->tableWidget->insertRow(0);
-    ui->tableWidget->setItem(0,0,nameBox);
-    ui->tableWidget->setItem(0,1,pressBox);
-    ui->tableWidget->setItem(0,2,priceBox);
-    ui->tableWidget->setItem(0,3,amountBox);
+    else {
+        while (ui->tableWidget->rowCount() > 0) {
+            ui->tableWidget->removeRow(0);
+        }
+    }
+
 
 }
 void PGInventory::remove(){
-    if(ui->addTitle->text().isEmpty() || ui->addPress->text().isEmpty()  ||ui->addAmount->text().isEmpty())return;
+    if(ui->removeAmount->text().isEmpty() || ui->removePress->text().isEmpty()  ||ui->removeTitle->text().isEmpty())return;
     std::string title= ui->removeTitle->text().toStdString();
     std::string press =ui->removePress->text().toStdString();
     int amount = std::stoi(ui->removeAmount->text().toStdString());

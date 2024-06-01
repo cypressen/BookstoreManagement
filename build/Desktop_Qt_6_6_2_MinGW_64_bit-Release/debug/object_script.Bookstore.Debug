@@ -21,6 +21,7 @@ debug/pgsale.o
 debug/pgsupplier.o
 debug/subpgsalemembuy.o
 debug/subpgsalenorbuy.o
+debug/qrc_pic.o
 debug/moc_mainwidget.o
 debug/moc_pgintention.o
 debug/moc_pginventory.o

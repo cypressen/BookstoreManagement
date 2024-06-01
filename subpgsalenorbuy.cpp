@@ -68,6 +68,7 @@ void SubPGSaleNorBuy::updateBookList(){
 
 
 void SubPGSaleNorBuy::bookSearch(){
+    if(ui->lineSearch->text().isEmpty())return;
     std::string getTitle = ui->lineSearch->text().toStdString();
 
     updateInvenList();
@@ -75,6 +76,7 @@ void SubPGSaleNorBuy::bookSearch(){
     for(int i = 0; i < ui->inventoryTable->rowCount();i+=1){
         if(getTitle == ui->inventoryTable->item(i,0)->text().toStdString()){
             rowIndex = i;
+            break;
         }
     }
     if(rowIndex != -1){
@@ -89,9 +91,12 @@ void SubPGSaleNorBuy::bookSearch(){
         ui->inventoryTable->setItem(0,1,priceBox);
         ui->inventoryTable->setItem(0,2,amountBox);
     }
-    while (ui->inventoryTable->rowCount() > 0) {
-        ui->inventoryTable->removeRow(0);
+    else {
+        while (ui->inventoryTable->rowCount() > 0) {
+            ui->inventoryTable->removeRow(0);
+        }
     }
+
 
 }
 

@@ -121,6 +121,9 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="text">
+    <string>Name</string>
+   </property>
   </widget>
   <widget class="QComboBox" name="selectTypeBox">
    <property name="geometry">

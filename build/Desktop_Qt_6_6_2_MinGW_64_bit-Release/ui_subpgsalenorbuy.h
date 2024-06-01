@@ -36,6 +36,7 @@ public:
     QPushButton *PBUpdate;
     QLineEdit *lineName;
     QLabel *label;
+    QLabel *label_2;
 
     void setupUi(QWidget *SubPGSaleNorBuy)
     {
@@ -99,6 +100,9 @@ public:
         label = new QLabel(SubPGSaleNorBuy);
         label->setObjectName("label");
         label->setGeometry(QRect(480, 20, 53, 15));
+        label_2 = new QLabel(SubPGSaleNorBuy);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(460, 120, 53, 15));
 
         retranslateUi(SubPGSaleNorBuy);
 
@@ -107,10 +111,11 @@ public:
 
     void retranslateUi(QWidget *SubPGSaleNorBuy)
     {
-        SubPGSaleNorBuy->setWindowTitle(QCoreApplication::translate("SubPGSaleNorBuy", "Form", nullptr));
+        SubPGSaleNorBuy->setWindowTitle(QCoreApplication::translate("SubPGSaleNorBuy", "Normal", nullptr));
         PBRm->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Remove", nullptr));
         PBAdd->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Add", nullptr));
         PBConfirm->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Confirm", nullptr));
+        lineSearch->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Title", nullptr));
         QTableWidgetItem *___qtablewidgetitem = bookListTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Title", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = bookListTable->horizontalHeaderItem(1);
@@ -127,7 +132,9 @@ public:
         ___qtablewidgetitem5->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Amount", nullptr));
         PBCancel->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Cancel", nullptr));
         PBUpdate->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Refresh", nullptr));
+        lineName->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Name", nullptr));
         label->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Name", nullptr));
+        label_2->setText(QCoreApplication::translate("SubPGSaleNorBuy", "Title", nullptr));
     } // retranslateUi
 
 };

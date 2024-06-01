@@ -10,8 +10,8 @@
 #define UI_MAINWIDGET_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -22,17 +22,6 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWidget
 {
 public:
-    QWidget *widget;
-    QHBoxLayout *horizontalLayout;
-    QVBoxLayout *verticalLayout;
-    QPushButton *PBSale;
-    QPushButton *PBInventory;
-    QPushButton *PBPurchasing;
-    QPushButton *PBMembers;
-    QPushButton *PBIntention;
-    QPushButton *PBPromotion;
-    QPushButton *PBSupplier;
-    QPushButton *PBPress;
     QStackedWidget *stackedWidget;
     QWidget *PGSale;
     QWidget *PGPurchasing;
@@ -42,6 +31,16 @@ public:
     QWidget *PGSupplier;
     QWidget *PGPress;
     QWidget *PGInventory;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
+    QPushButton *PBSale;
+    QPushButton *PBInventory;
+    QPushButton *PBPurchasing;
+    QPushButton *PBMembers;
+    QPushButton *PBIntention;
+    QPushButton *PBPromotion;
+    QPushButton *PBSupplier;
+    QPushButton *PBPress;
 
     void setupUi(QWidget *MainWidget)
     {
@@ -50,14 +49,43 @@ public:
         MainWidget->resize(1179, 833);
         MainWidget->setMinimumSize(QSize(1179, 833));
         MainWidget->setMaximumSize(QSize(1179, 833));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/new/picture/src/icon1.png"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWidget->setWindowIcon(icon);
+        stackedWidget = new QStackedWidget(MainWidget);
+        stackedWidget->setObjectName("stackedWidget");
+        stackedWidget->setGeometry(QRect(130, 11, 1000, 1258));
+        stackedWidget->setMinimumSize(QSize(1000, 800));
+        PGSale = new QWidget();
+        PGSale->setObjectName("PGSale");
+        stackedWidget->addWidget(PGSale);
+        PGPurchasing = new QWidget();
+        PGPurchasing->setObjectName("PGPurchasing");
+        stackedWidget->addWidget(PGPurchasing);
+        PGMembers = new QWidget();
+        PGMembers->setObjectName("PGMembers");
+        stackedWidget->addWidget(PGMembers);
+        PGIntention = new QWidget();
+        PGIntention->setObjectName("PGIntention");
+        stackedWidget->addWidget(PGIntention);
+        PGPromotion = new QWidget();
+        PGPromotion->setObjectName("PGPromotion");
+        stackedWidget->addWidget(PGPromotion);
+        PGSupplier = new QWidget();
+        PGSupplier->setObjectName("PGSupplier");
+        stackedWidget->addWidget(PGSupplier);
+        PGPress = new QWidget();
+        PGPress->setObjectName("PGPress");
+        stackedWidget->addWidget(PGPress);
+        PGInventory = new QWidget();
+        PGInventory->setObjectName("PGInventory");
+        stackedWidget->addWidget(PGInventory);
         widget = new QWidget(MainWidget);
         widget->setObjectName("widget");
-        widget->setGeometry(QRect(30, 10, 1101, 802));
-        horizontalLayout = new QHBoxLayout(widget);
-        horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        verticalLayout = new QVBoxLayout();
+        widget->setGeometry(QRect(20, 10, 93, 801));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
         PBSale = new QPushButton(widget);
         PBSale->setObjectName("PBSale");
         PBSale->setMinimumSize(QSize(91, 51));
@@ -108,39 +136,6 @@ public:
         verticalLayout->addWidget(PBPress);
 
 
-        horizontalLayout->addLayout(verticalLayout);
-
-        stackedWidget = new QStackedWidget(widget);
-        stackedWidget->setObjectName("stackedWidget");
-        stackedWidget->setMinimumSize(QSize(1000, 800));
-        PGSale = new QWidget();
-        PGSale->setObjectName("PGSale");
-        stackedWidget->addWidget(PGSale);
-        PGPurchasing = new QWidget();
-        PGPurchasing->setObjectName("PGPurchasing");
-        stackedWidget->addWidget(PGPurchasing);
-        PGMembers = new QWidget();
-        PGMembers->setObjectName("PGMembers");
-        stackedWidget->addWidget(PGMembers);
-        PGIntention = new QWidget();
-        PGIntention->setObjectName("PGIntention");
-        stackedWidget->addWidget(PGIntention);
-        PGPromotion = new QWidget();
-        PGPromotion->setObjectName("PGPromotion");
-        stackedWidget->addWidget(PGPromotion);
-        PGSupplier = new QWidget();
-        PGSupplier->setObjectName("PGSupplier");
-        stackedWidget->addWidget(PGSupplier);
-        PGPress = new QWidget();
-        PGPress->setObjectName("PGPress");
-        stackedWidget->addWidget(PGPress);
-        PGInventory = new QWidget();
-        PGInventory->setObjectName("PGInventory");
-        stackedWidget->addWidget(PGInventory);
-
-        horizontalLayout->addWidget(stackedWidget);
-
-
         retranslateUi(MainWidget);
 
         QMetaObject::connectSlotsByName(MainWidget);
@@ -148,7 +143,7 @@ public:
 
     void retranslateUi(QWidget *MainWidget)
     {
-        MainWidget->setWindowTitle(QCoreApplication::translate("MainWidget", "MainWidget", nullptr));
+        MainWidget->setWindowTitle(QCoreApplication::translate("MainWidget", "Book store management", nullptr));
         PBSale->setText(QCoreApplication::translate("MainWidget", "\345\233\276\344\271\246\351\224\200\345\224\256", nullptr));
         PBInventory->setText(QCoreApplication::translate("MainWidget", "\345\233\276\344\271\246\345\272\223\345\255\230", nullptr));
         PBPurchasing->setText(QCoreApplication::translate("MainWidget", "\345\233\276\344\271\246\351\207\207\350\264\255", nullptr));

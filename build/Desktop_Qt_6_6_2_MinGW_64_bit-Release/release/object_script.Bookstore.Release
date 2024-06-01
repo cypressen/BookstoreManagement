@@ -21,6 +21,7 @@ release/pgsale.o
 release/pgsupplier.o
 release/subpgsalemembuy.o
 release/subpgsalenorbuy.o
+release/qrc_pic.o
 release/moc_mainwidget.o
 release/moc_pgintention.o
 release/moc_pginventory.o

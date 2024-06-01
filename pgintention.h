@@ -25,7 +25,7 @@ public:
 
 
     void memSelect();
-    void memSearch();
+    bool memSearch();
 
     bool bookSearch();
     void bookAdd();

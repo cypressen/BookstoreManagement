@@ -220,6 +220,7 @@ public:
         selectBox->setItemText(0, QCoreApplication::translate("PGSale", "Normal", nullptr));
         selectBox->setItemText(1, QCoreApplication::translate("PGSale", "Member", nullptr));
 
+        lineSearch->setText(QCoreApplication::translate("PGSale", "Name", nullptr));
         selectTypeBox->setItemText(0, QCoreApplication::translate("PGSale", "Normal", nullptr));
         selectTypeBox->setItemText(1, QCoreApplication::translate("PGSale", "Individual", nullptr));
         selectTypeBox->setItemText(2, QCoreApplication::translate("PGSale", "Corporate", nullptr));

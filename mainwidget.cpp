@@ -9,6 +9,7 @@ MainWidget::MainWidget(QWidget *parent)
 {
     ui->setupUi(this);
 
+
     //init pages
     PGSale *salePage = new PGSale(this);
     PGInventory *inventoryPage = new PGInventory(this);

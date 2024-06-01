@@ -98,12 +98,13 @@ void PGMembers::change(){
 
 
 
-void PGMembers::search(){
+bool PGMembers::search(){
+    if(ui->lineName->text().isEmpty())return false;
     update();
     std::string getName = ui->lineName->text().toStdString();
 
 
-    auto helper =[&](QTableWidget* tableWidget){
+    auto helper =[&](QTableWidget* tableWidget)->bool{
         for(int i = 0;i < tableWidget->rowCount();i+=1){
             if(getName == tableWidget->item(i,0)->text().toStdString()){
 
@@ -117,18 +118,24 @@ void PGMembers::search(){
                 tableWidget->setItem(0,0,nameBox);
                 tableWidget->setItem(0,1,levelBox);
                 tableWidget->setItem(0,2,pointsBox);
+                return true;
             }
+
         }
 
-
+return false;
     };
     if(ui->comboBox->currentIndex() == 0){
-        helper(ui->tableInd);
+        if( helper(ui->tableInd))return true;
+        else clearTable(ui->tableInd);
     }
 
     else {
-        helper(ui->tableCor);
+        if(helper(ui->tableCor)) return true;
+        else clearTable(ui->tableCor);
     }
+
+    return false;
 }
 
 

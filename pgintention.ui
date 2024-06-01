@@ -88,6 +88,9 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="text">
+    <string>Name</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="PBMemSearch">
    <property name="geometry">
@@ -207,6 +210,9 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="text">
+    <string>Title</string>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineAmount">
    <property name="geometry">
@@ -216,6 +222,9 @@
      <width>41</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>0</string>
    </property>
   </widget>
   <widget class="QPushButton" name="PBBookAdd">
@@ -265,6 +274,9 @@
      <width>113</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>Name</string>
    </property>
   </widget>
   <widget class="QComboBox" name="comboSearchBox">
