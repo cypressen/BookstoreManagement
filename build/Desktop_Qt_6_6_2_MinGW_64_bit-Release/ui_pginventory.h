@@ -239,7 +239,7 @@ public:
         importLine->setGeometry(QRect(120, 100, 113, 23));
         label_7 = new QLabel(PGInventory);
         label_7->setObjectName("label_7");
-        label_7->setGeometry(QRect(0, 0, 101, 51));
+        label_7->setGeometry(QRect(0, 0, 71, 31));
 
         retranslateUi(PGInventory);
 

@@ -144,7 +144,7 @@ public:
 
         label_5 = new QLabel(PGMembers);
         label_5->setObjectName("label_5");
-        label_5->setGeometry(QRect(0, 0, 131, 61));
+        label_5->setGeometry(QRect(0, 0, 121, 41));
 
         retranslateUi(PGMembers);
 

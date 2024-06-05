@@ -115,7 +115,7 @@ public:
         PBSearch->setGeometry(QRect(540, 100, 80, 23));
         PBSave = new QPushButton(PGSale);
         PBSave->setObjectName("PBSave");
-        PBSave->setGeometry(QRect(30, 50, 80, 23));
+        PBSave->setGeometry(QRect(30, 60, 80, 23));
         PBImport = new QPushButton(PGSale);
         PBImport->setObjectName("PBImport");
         PBImport->setGeometry(QRect(30, 100, 80, 23));
@@ -194,7 +194,7 @@ public:
         label_5->setGeometry(QRect(310, 0, 131, 41));
         label_6 = new QLabel(PGSale);
         label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(-10, -30, 151, 101));
+        label_6->setGeometry(QRect(0, 0, 121, 31));
 
         retranslateUi(PGSale);
 

@@ -123,7 +123,7 @@ public:
         PBImport->setGeometry(QRect(110, 130, 80, 23));
         label_2 = new QLabel(PGSupplier);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(-20, -10, 151, 81));
+        label_2->setGeometry(QRect(0, 0, 101, 41));
 
         retranslateUi(PGSupplier);
 
